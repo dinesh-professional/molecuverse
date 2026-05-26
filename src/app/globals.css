@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Share+Tech+Mono&family=Noto+Sans:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-orbitron: 'Orbitron', sans-serif;
+  --font-share-tech-mono: 'Noto Sans', sans-serif;
+}
+
+body {
+  background-color: #0B1020;
+  color: #E2E8F0;
+  font-family: 'Noto Sans', sans-serif;
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+}
+
+/* Custom Scrollbar for Glassmorphic Panels */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(11, 16, 32, 0.5);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 245, 255, 0.3);
+  border-radius: 4px;
+  border: 1px solid rgba(0, 245, 255, 0.1);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 245, 255, 0.6);
+  box-shadow: 0 0 8px rgba(0, 245, 255, 0.5);
+}
+
+/* Custom Glassmorphism Utility */
+.glass-panel {
+  background: rgba(11, 16, 32, 0.65);
+  backdrop-filter: blur(12px) saturate(160%);
+  -webkit-backdrop-filter: blur(12px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-panel-cyan {
+  background: rgba(5, 8, 17, 0.7);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(0, 245, 255, 0.15);
+  box-shadow: inset 0 0 15px rgba(0, 245, 255, 0.05);
+}
+
+.glass-panel-purple {
+  background: rgba(5, 8, 17, 0.7);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(108, 99, 255, 0.15);
+  box-shadow: inset 0 0 15px rgba(108, 99, 255, 0.05);
+}
+
+/* Futuristic Scanner Line Effect */
+.scanner-line {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(0, 245, 255, 0.8), transparent);
+  animation: scan 4s linear infinite;
+}
+
+@keyframes scan {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(100%); }
+  100% { transform: translateY(0); }
+}
+
+/* Hologram Overlay Noise */
+.hologram-noise {
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  background-size: 100% 4px, 6px 100%;
+}
+
+.text-glow-cyan {
+  text-shadow: 0 0 5px rgba(0, 245, 255, 0.8), 0 0 10px rgba(0, 245, 255, 0.3);
+}
+
+.text-glow-green {
+  text-shadow: 0 0 5px rgba(0, 255, 157, 0.8), 0 0 10px rgba(0, 255, 157, 0.3);
+}
+
+.text-glow-pink {
+  text-shadow: 0 0 5px rgba(255, 0, 122, 0.8), 0 0 10px rgba(255, 0, 122, 0.3);
+}
