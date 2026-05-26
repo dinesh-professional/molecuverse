@@ -6,7 +6,7 @@ import { GlassCard } from '../ui/GlassCard';
 import { Camera, AlertCircle, Sparkles, HelpCircle, Move } from 'lucide-react';
 
 // Global cache for dynamic script loading promises to prevent race conditions during renders/hot-reloads
-const scriptPromises: Record<string, Promise<void>> = {};
+const scriptPromises: Record<string, Promise<void> | undefined> = {};
 
 const loadScript = (src: string): Promise<void> => {
   if (scriptPromises[src]) {
