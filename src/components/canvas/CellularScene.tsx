@@ -58,20 +58,19 @@ const EndoplasmicReticulum: React.FC = () => {
 
 // Cytoskeleton Microtubules stretching from nucleus to membrane
 const MicrotubuleLine: React.FC<{ start: THREE.Vector3; control: THREE.Vector3; end: THREE.Vector3 }> = ({ start, control, end }) => {
-  const points = useMemo(() => {
+  const lineMesh = useMemo(() => {
     const curve = new THREE.QuadraticBezierCurve3(start, control, end);
-    return curve.getPoints(20);
+    const points = curve.getPoints(20);
+    const geom = new THREE.BufferGeometry().setFromPoints(points);
+    const mat = new THREE.LineBasicMaterial({
+      color: '#6C63FF',
+      transparent: true,
+      opacity: 0.16
+    });
+    return new THREE.Line(geom, mat);
   }, [start, control, end]);
 
-  const geom = useMemo(() => {
-    return new THREE.BufferGeometry().setFromPoints(points);
-  }, [points]);
-
-  return (
-    <line geometry={geom}>
-      <lineBasicMaterial color="#6C63FF" transparent opacity={0.16} />
-    </line>
-  );
+  return <primitive object={lineMesh} />;
 };
 
 export const CellularScene: React.FC = () => {

@@ -23,7 +23,9 @@ const OrbitLine: React.FC<{
   color: string;
   inclination: number;
 }> = ({ radius, ecc, color, inclination }) => {
-  const points = useMemo(() => {
+  const incRad = inclination * Math.PI / 180;
+
+  const orbitLineMesh = useMemo(() => {
     const list = [];
     const semiMajor = radius;
     const semiMinor = radius * Math.sqrt(1.0 - ecc * ecc);
@@ -36,20 +38,14 @@ const OrbitLine: React.FC<{
       const z = Math.sin(theta) * semiMinor;
       list.push(new THREE.Vector3(x, 0, z));
     }
-    return list;
-  }, [radius, ecc]);
-
-  const lineGeometry = useMemo(() => {
-    return new THREE.BufferGeometry().setFromPoints(points);
-  }, [points]);
-
-  const incRad = inclination * Math.PI / 180;
+    const geom = new THREE.BufferGeometry().setFromPoints(list);
+    const mat = new THREE.LineBasicMaterial({ color, transparent: true, opacity: 0.12 });
+    return new THREE.Line(geom, mat);
+  }, [radius, ecc, color]);
 
   return (
     <group rotation={[incRad, 0, 0]}>
-      <line geometry={lineGeometry}>
-        <lineBasicMaterial color={color} transparent opacity={0.12} />
-      </line>
+      <primitive object={orbitLineMesh} />
     </group>
   );
 };
